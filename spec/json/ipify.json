@@ -1,0 +1,94 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "openapi-ipify",
+    "description": "OpenAPI client for ipify, a simple public IP address API.",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "contact": {
+      "name": "Non",
+      "url": "https://www.ipify.org/",
+      "email": "non@non.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.ipify.org"
+    },
+    {
+      "url": "https://api64.ipify.org"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get your public IP address",
+        "operationId": "getIp",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Response format",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "text",
+                "json",
+                "jsonp"
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Your public IP address",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ip"
+                }
+              },
+              "application/javascript": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Ip": {
+        "required": [
+          "ip"
+        ],
+        "properties": {
+          "ip": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
