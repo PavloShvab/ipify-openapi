@@ -2,7 +2,7 @@
 
 # ipify-openapi
 
-Ipify is designed to help you get the public IP address and geolocation data from an IP address.
+OpenAPI specification for ipify service, is designed to help you get the public IP address and geolocation data from an IP address.
 
 * [Documentation for A Simple Public IP Address API](https://www.ipify.org/)
 * [Documentation for IP Geolocation API](https://geo.ipify.org/docs)
