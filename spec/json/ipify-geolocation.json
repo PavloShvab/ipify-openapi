@@ -1,0 +1,417 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "openapi-geolocation",
+    "description": "OpenAPI client for Geolocation",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "termsOfService": "https://geo.ipify.org/terms-of-service",
+    "contact": {
+      "name": "Non",
+      "url": "https://geo.ipify.org/",
+      "email": "non@non.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://geo.ipify.org"
+    }
+  ],
+  "paths": {
+    "/api/v2/country": {
+      "get": {
+        "summary": "Get locate and identify website visitors by IP address. IP location helps prevent fraud, customize web experiences, and maintain regulatory compliance. Credits cost per request: 1. Country output fields: ip, country, timezone, isp, as, domains.",
+        "operationId": "getIPGeolocation (Country)",
+        "parameters": [
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Get your personal API KEY on [My subscriptions](https://geo.ipify.org/subscriptions) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ipAddress",
+            "in": "query",
+            "description": "Optional. IPv4 or IPv6 to search location by. If the parameter is not specified, then it defaults to client request's public IP address.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Optional. Domain name to search location by. If the parameter is not specified, then 'ipAddress' will be used.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Optional. Email address or domain name to search location by it's MX servers. If the parameter is not specified, then 'ipAddress' will be used.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "escapedUnicode",
+            "in": "query",
+            "description": "Optional. 1 - allows you to receive unescaped Unicode characters in the API response (default is to escape as \\uXXXX). Acceptable values: 0 | 1. Default: 0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get locate and identify website visitors by IP address.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ip"
+                }
+              },
+              "application/javascript": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/country,city": {
+      "get": {
+        "summary": "Get locate and identify website visitors by IP address. IP location helps prevent fraud, customize web experiences, and maintain regulatory compliance. Country + City API type features. Credits cost per request: 2. Country output fields: ip, country, timezone, isp, as, domains. City output fields: city, lat, lng, postalCode, geonameId.",
+        "operationId": "getIPGeolocation (Country + City)",
+        "parameters": [
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Get your personal API KEY on [My subscriptions](https://geo.ipify.org/subscriptions) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ipAddress",
+            "in": "query",
+            "description": "Optional. IPv4 or IPv6 to search location by. If the parameter is not specified, then it defaults to client request's public IP address.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Optional. Domain name to search location by. If the parameter is not specified, then 'ipAddress' will be used.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Optional. Email address or domain name to search location by it's MX servers. If the parameter is not specified, then 'ipAddress' will be used.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "escapedUnicode",
+            "in": "query",
+            "description": "Optional. 1 - allows you to receive unescaped Unicode characters in the API response (default is to escape as \\uXXXX). Acceptable values: 0 | 1. Default: 0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get locate and identify website visitors by IP address.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ip"
+                }
+              },
+              "application/javascript": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/country,city,vpn": {
+      "get": {
+        "summary": "Get locate and identify website visitors by IP address. IP location helps prevent fraud, customize web experiences, and maintain regulatory compliance. Country + City + VPN detection API type features. Credits cost per request: 3. Country output fields: ip, country, timezone, isp, as, domains. City output fields: city, lat, lng, postalCode, geonameId. <br/>VPN detection output fields: prox, vpn, tor.",
+        "operationId": "getIPGeolocation (Country + City + Vpn detection)",
+        "parameters": [
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Get your personal API KEY on [My subscriptions](https://geo.ipify.org/subscriptions) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ipAddress",
+            "in": "query",
+            "description": "Optional. IPv4 or IPv6 to search location by. If the parameter is not specified, then it defaults to client request's public IP address.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Optional. Domain name to search location by. If the parameter is not specified, then 'ipAddress' will be used.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Optional. Email address or domain name to search location by it's MX servers. If the parameter is not specified, then 'ipAddress' will be used.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "escapedUnicode",
+            "in": "query",
+            "description": "Optional. 1 - allows you to receive unescaped Unicode characters in the API response (default is to escape as \\uXXXX). Acceptable values: 0 | 1. Default: 0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get locate and identify website visitors by IP address.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ip"
+                }
+              },
+              "application/javascript": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service/account-balance": {
+      "get": {
+        "summary": "Account balance information.",
+        "operationId": "get Account balance",
+        "parameters": [
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Get your personal API KEY on [My subscriptions](https://geo.ipify.org/subscriptions) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account balance information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountBalance"
+                }
+              },
+              "application/javascript": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Ip": {
+        "type": "object",
+        "required": [
+          "ip",
+          "location",
+          "domains",
+          "as",
+          "isp"
+        ],
+        "properties": {
+          "ip": {
+            "type": "string"
+          },
+          "location": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "as": {
+            "$ref": "#/components/schemas/As"
+          },
+          "isp": {
+            "type": "string"
+          },
+          "proxy": {
+            "$ref": "#/components/schemas/Proxy"
+          }
+        }
+      },
+      "Location": {
+        "type": "object",
+        "required": [
+          "country",
+          "region",
+          "timezone"
+        ],
+        "properties": {
+          "country": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "lat": {
+            "type": "number",
+            "format": "float"
+          },
+          "lng": {
+            "type": "number",
+            "format": "float"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "geonameId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "As": {
+        "type": "object",
+        "required": [
+          "asn",
+          "name",
+          "route",
+          "domain",
+          "type"
+        ],
+        "properties": {
+          "asn": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string",
+            "format": "uri"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "Proxy": {
+        "type": "object",
+        "required": [
+          "proxy",
+          "vpn",
+          "tor"
+        ],
+        "properties": {
+          "proxy": {
+            "type": "boolean"
+          },
+          "vpn": {
+            "type": "boolean"
+          },
+          "tor": {
+            "type": "boolean"
+          }
+        }
+      },
+      "AccountBalance": {
+        "type": "object",
+        "properties": {
+          "credits": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      }
+    }
+  }
+}
