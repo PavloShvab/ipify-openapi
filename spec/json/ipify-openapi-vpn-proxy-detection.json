@@ -1,0 +1,186 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "openapi-vpn-proxy-detection",
+    "description": "OpenAPI client for VPN & Proxy Detection",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "termsOfService": "https://geo.ipify.org/terms-of-service",
+    "contact": {
+      "name": "Non",
+      "url": "https://vpn-proxy-detection.ipify.org/",
+      "email": "non@non.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://vpn-proxy-detection.ipify.org"
+    }
+  ],
+  "paths": {
+    "/api/v1": {
+      "get": {
+        "summary": "Check if users are employing IP VPN, Proxy, or Tor connections with VPN & Proxy Detection API.",
+        "operationId": "get VPN & Proxy Detection",
+        "parameters": [
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Get your personal API KEY on [My subscriptions](https://geo.ipify.org/subscriptions) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ipAddress",
+            "in": "query",
+            "description": "Optional. IPv4 or IPv6 to search location by. If the parameter is not specified, then it defaults to client request's public IP address.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Optional. Domain name to search location by. If the parameter is not specified, then 'ipAddress' will be used.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Optional. Email address or domain name to search location by it's MX servers. If the parameter is not specified, then 'ipAddress' will be used.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "escapedUnicode",
+            "in": "query",
+            "description": "Optional. 1 - allows you to receive unescaped Unicode characters in the API response (default is to escape as \\uXXXX). Acceptable values: 0 | 1. Default: 0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get locate and identify website visitors by IP address.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ip"
+                }
+              },
+              "application/javascript": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service/account-balance": {
+      "get": {
+        "summary": "Account balance information.",
+        "operationId": "get Account balance",
+        "parameters": [
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Get your personal API KEY on [My subscriptions](https://geo.ipify.org/subscriptions) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account balance information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountBalance"
+                }
+              },
+              "application/javascript": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Ip": {
+        "type": "object",
+        "required": [
+          "ip",
+          "proxy"
+        ],
+        "properties": {
+          "ip": {
+            "type": "string"
+          },
+          "proxy": {
+            "$ref": "#/components/schemas/Proxy"
+          }
+        }
+      },
+      "Proxy": {
+        "type": "object",
+        "required": [
+          "proxy",
+          "vpn",
+          "tor"
+        ],
+        "properties": {
+          "proxy": {
+            "type": "boolean"
+          },
+          "vpn": {
+            "type": "boolean"
+          },
+          "tor": {
+            "type": "boolean"
+          }
+        }
+      },
+      "AccountBalance": {
+        "type": "object",
+        "properties": {
+          "credits": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      }
+    }
+  }
+}
